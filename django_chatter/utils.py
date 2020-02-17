@@ -2,7 +2,7 @@ from channels.auth import AuthMiddleware
 from channels.sessions import CookieMiddleware, SessionMiddleware
 from channels.db import database_sync_to_async
 
-from django.contrib.sessions.models import Session
+from user_sessions.models import Session
 from django.utils.crypto import constant_time_compare
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.auth import (
