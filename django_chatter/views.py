@@ -115,7 +115,7 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 def users_list(request):
     if (request.is_ajax()):
         data_array = []
-        for user in get_user_model().objects.filter(group__name='Gen-Era'):
+        for user in get_user_model().objects.filter(groups__name='Gen-Era'):
             data_dict = {}
             data_dict['id'] = user.pk
             data_dict['text'] = user.username
