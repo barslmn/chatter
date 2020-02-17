@@ -1,4 +1,4 @@
-from .models import *
+from .models import Room
 
 
 def get_chatroom_list(request):
