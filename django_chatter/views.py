@@ -114,7 +114,7 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 @login_required
 def users_list(request):
     user = get_user_model().objects.get(username=request.user)
-    if user.groups.name == 'Gen-Era':
+    if user.groups.filter(name='Gen-Era'):
         qs = get_user_model().objects.all()
     else:
         qs = get_user_model().objects.filter(groups__name='Gen-Era')
