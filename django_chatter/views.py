@@ -113,9 +113,13 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 # The following functions deal with AJAX requests
 @login_required
 def users_list(request):
+    if request.user.groups.name == 'Gen-Era':
+        qs = get_user_model().objects.all()
+    else:
+        qs = get_user_model().objects.filter(groups__name='Gen-Era')
     if (request.is_ajax()):
         data_array = []
-        for user in get_user_model().objects.filter(groups__name='Gen-Era'):
+        for user in qs:
             data_dict = {}
             data_dict['id'] = user.pk
             data_dict['text'] = user.username
